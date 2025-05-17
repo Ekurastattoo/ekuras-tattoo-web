@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ekuras Tattoo</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #f2f2f2;
+      height: 100%;
+    }
+    html, body {
+      height: 100%;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      animation: fadeIn 2s;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    /* Aquí modifiqué esta clase para que se vea desde el inicio */
+    .section {
+      margin-bottom: 40px;
+      width: 100%;
+      animation: fadeInUp 1s forwards;
+      /* Quité opacity:0 y transform para que se muestre */
+    }
+    .section h2 {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .tattoo-artist img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      animation: slideIn 1s ease-out;
+    }
+    .reserve-form iframe {
+      width: 100%;
+      height: 1000px;
+      max-width: 1000px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    }
+    .map iframe {
+      width: 100%;
+      height: 450px;
+      border: 0;
+    }
+    footer {
+      background-color: #333;
+      color: #f2f2f2;
+      padding: 20px 0;
+      text-align: center;
+    }
+    footer a {
+      color: #f2f2f2;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 18px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Estilos para la vista de móvil */
+    @media screen and (max-width: 768px) {
+      .gallery img {
+        width: 100%;
+        max-width: 100%;
+      }
+      .tattoo-artist img {
+        width: 80%;
+      }
+      .reserve-form iframe {
+        height: 1300px;
+      }
+      .map iframe {
+        height: 350px;
+      }
+      .pc-mode {
+        display: none;
+      }
+      .mobile-mode {
+        display: block;
+      }
+    }
+
+    /* Estilos para la vista de PC */
+    @media screen and (min-width: 769px) {
+      .mobile-mode {
+        display: none;
+      }
+      .pc-mode {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ekuras Tattoo</h1>
+    <button id="toggleMode" onclick="toggleMode()">Ver en Modo Móvil</button>
+  </header>
+
+  <div class="content">
+    <!-- Sección de Precios para PC -->
+    <div class="section prices pc-mode">
+      <h2>Precios</h2>
+      <ul>
+        <li>Tatuaje 5cm 50€</li>
+        <li>Tatuaje +5cm 100€</li>
+        <li>Sesion de día: 400€ - 450€</li>
+      </ul>
+    </div>
+
+    <!-- Sección de Precios para Móvil -->
+    <div class="section prices mobile-mode" style="display: none;">
+      <h2>Precios</h2>
+      <ul>
+        <li>Tatuaje 5cm 50€</li>
+        <li>Tatuaje +5cm 100€</li>
+        <li>Sesion de día: 400€ - 450€</li>
+      </ul>
+    </div>
+
+    <!-- Sección de Sobre Nosotros para PC -->
+    <div class="section about-us pc-mode">
+      <h2>Sobre Nosotros</h2>
+      <p>En Ekuras Tattoo nos especializamos en realizar tatuajes de alta calidad en un ambiente relajado y profesional. Nuestros artistas tienen años de experiencia y estamos comprometidos en ofrecerte el mejor diseño personalizado.</p>
+    </div>
+
+    <!-- Sección de Sobre Nosotros para Móvil -->
+    <div class="section about-us mobile-mode" style="display: none;">
+      <h2>Sobre Nosotros</h2>
+      <p>En Ekuras Tattoo nos especializamos en realizar tatuajes de alta calidad en un ambiente relajado y profesional. Nuestros artistas tienen años de experiencia y estamos comprometidos en ofrecerte el mejor diseño personalizado.</p>
+    </div>
+
+    <!-- Sección de Galería para PC -->
+    <div class="section gallery pc-mode">
+      <h2>Galería</h2>
+      <div class="gallery">
+        <img src="galeria1.jpg" alt="Ejemplo 1" />
+        <img src="galeria2.jpg" alt="Ejemplo 2" />
+        <img src="galeria3.jpg" alt="Ejemplo 3" />
+      </div>
+    </div>
+
+    <!-- Sección de Galería para Móvil -->
+    <div class="section gallery mobile-mode" style="display: none;">
+      <h2>Galería</h2>
+      <div class="gallery">
+        <img src="galeria1.jpg" alt="Ejemplo 1" />
+        <img src="galeria2.jpg" alt="Ejemplo 2" />
+        <img src="galeria3.jpg" alt="Ejemplo 3" />
+      </div>
+    </div>
+
+    <!-- Formulario de reserva normal -->
+    <div class="section">
+      <h2>Reserva Normal</h2>
+      <div class="reserve-form">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfiwtDZYomFtHlGjf60g1FL2nriR8phyH-5DHD0L53IXbHz2Q/viewform?usp=dialog"></iframe>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tatuador Invitado</h2>
+      <div class="tattoo-artist">
+        <h3>Gabo Raga TATTOO</h3>
+        <p>Especializado en Cover Up y Realismo a Color.</p>
+        <img src="https://ragatattoo.com/tatto-test/gabo.jpg" alt="Gabo Raga TATTOO" />
+        <p>Sigue a Gabo en Instagram: <a href="https://www.instagram.com/gabo_ragatattoo/" target="_blank">gabo_ragatattoo</a></p>
+      </div>
+      <div class="gallery">
+        <h3>Ejemplos Gabo</h3>
+        <img src="gabo1.jpg" alt="Tatuaje de Gabo 1" />
+        <img src="gabo2.jpg" alt="Tatuaje de Gabo 2" />
+        <img src="gabo3.jpg" alt="Tatuaje de Gabo 3" />
+      </div>
+      <div class="reserve-form">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfo7RmlrEmIxO0Yj6SahUo8oUGRduW9JwHJncjSTHyz5HVjwQ/viewform?usp=dialog"></iframe>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Ubicación</h2>
+      <div class="map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.837133425341!2d1.6990681!3d41.3463657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a479963dfc28a9%3A0xa78c5c5d919ca1de!2sEkura%E2%80%99s+Tattoo!5e0!3m2!1ses!2ses!4v1683562252145!5m2!1ses!2ses" 
+          allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Comentarios</h2>
+      <div class="reserve-form">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScWqucRXJEH6vsRSg7sAGFqW0idAHprVwZKOHbojHjkBpU82w/viewform?usp=dialog"></iframe>
+      </div>
+    </div>
+
+    <!-- Sección de Cuidados -->
+    <div class="section">
+      <button onclick="toggleAftercare()" style="background-color: #444; color: white; padding: 12px 20px; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: background-color 0.3s;">
+        <span style="font-size: 20px;">❓</span> ¿Cómo cuidar tu tatuaje?
+      </button>
+
+      <div id="aftercare-content" style="margin-top: 20px; background-color: #1e1e1e; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5); opacity: 0; max-height: 0; overflow: hidden; transition: all 0.5s ease; pointer-events: none;">
+        <h2 style="color: #fff;">Cuidados posteriores al tatuaje</h2>
+        <ul style="list-style-type: disc; padding-left: 20px;">
+          <li>Lávate bien las manos antes de tocar el tatuaje.</li>
+          <li>Limpia suavemente con agua tibia y jabón neutro.</li>
+          <li>Sécalo con una toalla de papel o al aire, sin frotar.</li>
+          <li>Aplica una capa fina de crema recomendada (consulta con tu tatuador).</li>
+          <li>No rasques ni arranques las costras.</li>
+          <li>Evita sol, playa, piscinas y baños largos por al menos 2 semanas.</li>
+          <li>Usa ropa limpia y evita la fricción directa en el área tatuada.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Contáctanos:</p>
+    <a href="https://www.instagram.com/ika.rial/" target="_blank">Instagram Ika Rial</a> |
+    <a href="https://www.instagram.com/ekuras_tattoo/" target="_blank">Instagram Ekuras Tattoo</a> |
+    <a href="https://www.instagram.com/gabo_ragatattoo/" target="_blank">Instagram Gabo Raga</a>
